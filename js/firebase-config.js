@@ -14,11 +14,12 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebas
 const firebaseConfig = {
   apiKey: "AIzaSyB601UUt1uwcL6DNBZbLtq_qwdJmW78n4o",
   authDomain: "analyse-lineaire.firebaseapp.com",
-  databaseURL: "https://analyse-lineaire-default-rtdb.firebaseio.com",
+  databaseURL: "https://analyse-lineaire-default-rtdb.firebaseio.com", // Note: Cette URL est pour la Realtime Database, pas Firestore.
   projectId: "analyse-lineaire",
   storageBucket: "analyse-lineaire.firebasestorage.app",
   messagingSenderId: "711443558146",
   appId: "1:711443558146:web:e1bd5ff08b59129c379c1b"
+}; // <--- Cette accolade fermante manquait ici !
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
