@@ -610,10 +610,82 @@ body.dark .prob-box p { color: #fcd34d; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ================================================================
+   EDIT MODE
+   ================================================================ */
+
+/* Floating edit toggle button */
+.edit-toggle-fab {
+  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 50px;
+  border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+  background: var(--text); color: var(--bg);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: all 0.25s cubic-bezier(.4,0,.2,1);
+}
+.edit-toggle-fab:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+.edit-toggle-fab.active {
+  background: var(--accent); color: #1c1917;
+  box-shadow: 0 4px 20px rgba(194,163,90,0.4);
+}
+
+/* Edit mode banner */
+.edit-mode-banner {
+  background: var(--accent-light); border: 1px solid var(--accent);
+  border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 16px;
+  font-size: 13px; color: #92400e; font-weight: 500;
+}
+body.dark .edit-mode-banner { color: #fcd34d; }
+
+.edit-section-label {
+  font-size: 11px; color: rgba(255,255,255,0.7); margin-bottom: 8px;
+  background: rgba(255,255,255,0.1); border-radius: 6px; padding: 4px 10px;
+  display: inline-block;
+}
+
+/* Editable elements */
+body.edit-mode .editable {
+  cursor: text !important;
+  outline: 2px dashed var(--accent) !important;
+  border-radius: 4px !important;
+  padding: 2px 4px !important;
+  transition: outline-color 0.2s;
+}
+body.edit-mode .editable:hover { outline-color: #d97706 !important; }
+
+/* Editable procede rows */
+.procede-row--editable { cursor: pointer !important; }
+.procede-row--editable:hover {
+  outline: 2px dashed var(--accent);
+  background: var(--accent-light) !important;
+}
+
+/* Add conclusion button */
+.btn-add-conc {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: var(--radius-sm);
+  border: 1px dashed var(--border2); background: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  color: var(--text-muted); transition: all 0.2s;
+}
+.btn-add-conc:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* Save field button */
+.btn-save-field {
+  padding: 7px 14px; border-radius: var(--radius-sm);
+  border: 1px solid var(--accent); background: var(--accent-light);
+  cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 12px;
+  color: #92400e; font-weight: 500; transition: all 0.2s;
+}
+.btn-save-field:hover { background: var(--accent); color: white; }
+body.dark .btn-save-field { color: #fcd34d; }
+
+/* ================================================================
    PRINT
    ================================================================ */
 @media print {
-  .sidebar, .topbar, .btn-add-procede, .btn-add-mouvement, .procede-delete { display: none !important; }
+  .sidebar, .topbar, .btn-add-procede, .btn-add-mouvement, .procede-delete, .edit-toggle-fab, .edit-mode-banner { display: none !important; }
   .main { margin-left: 0; }
   .texte-view { page-break-inside: avoid; }
 }
