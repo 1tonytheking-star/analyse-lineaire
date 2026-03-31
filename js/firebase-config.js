@@ -12,13 +12,17 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "REMPLACE-PAR-TA-CLE",
-  authDomain: "TON-PROJET.firebaseapp.com",
-  projectId: "TON-PROJET-ID",
-  storageBucket: "TON-PROJET.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abcdef123456"
-};
+  apiKey: "AIzaSyB601UUt1uwcL6DNBZbLtq_qwdJmW78n4o",
+  authDomain: "analyse-lineaire.firebaseapp.com",
+  databaseURL: "https://analyse-lineaire-default-rtdb.firebaseio.com",
+  projectId: "analyse-lineaire",
+  storageBucket: "analyse-lineaire.firebasestorage.app",
+  messagingSenderId: "711443558146",
+  appId: "1:711443558146:web:e1bd5ff08b59129c379c1b"
+}; // <-- L'accolade fermante a été ajoutée ici
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
