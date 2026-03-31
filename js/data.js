@@ -117,11 +117,11 @@ const SEED = {
   },
   analyses: {
     "c-t1": [
-      { id:"c-t1-mvt1", mouvement:1, titre:"L'émancipation de Dorante", vers:"v. 1-4",
+      { id:"c-t1-mvt1", mouvement:1, titre:"La rupture avec le passé", vers:"v. 1-4",
         procedes:[
-          {id:"p-c1m1-1",num:1,citation:"quitté la robe pour l'épée",ref:"(v. 1)",procede:"antithèse vestimentaire",analyse:`L'<span class="procede-type">antithèse vestimentaire</span> symbolise un changement d'identité radical : la robe du juriste contre l'épée du noble guerrier.`},
-          {id:"p-c1m1-2",num:2,citation:"l'attente où j'ai vécu n'a point été trompée",ref:"(v. 2)",procede:"litote",analyse:`La <span class="procede-type">litote</span> (« n'a point été trompée ») traduit discrètement une profonde satisfaction.`},
-          {id:"p-c1m1-3",num:3,citation:"mon père a consenti que je suive mon choix",ref:"(v. 3)",procede:"valorisation de l'autonomie",analyse:`L'insistance sur le <span class="procede-type">consentement paternel</span> paradoxalement souligne la rébellion de Dorante.`},
+          {id:"p-c1m1-1",num:1,citation:"quitté la robe pour l'épée",ref:"(v. 1)",procede:"double métonymie + locution temporelle",analyse:`La locution temporelle (« À la fin ») souligne le soulagement. La <span class="procede-type">double métonymie</span> (« la robe » pour les études/la loi, « l'épée » pour la noblesse) symbolise immédiatement son changement radical de classe sociale.`},
+          {id:"p-c1m1-2",num:2,citation:"l'attente où j'ai vécu n'a point été trompée",ref:"(v. 2)",procede:"litote",analyse:`La <span class="procede-type">litote</span> (« n'a point été trompée ») insiste sur la réussite immédiate de sa transition sociale, tandis que le lexique de l'illusion (« trompée ») amorce le thème du mensonge.`},
+          {id:"p-c1m1-3",num:3,citation:"mon père a consenti que je suive mon choix",ref:"(v. 3)",procede:"champ lexical du consentement",analyse:`Le <span class="procede-type">champ lexical du consentement</span> montre que l'autorité paternelle valide cette émancipation, la rendant légale.`},
           {id:"p-c1m1-4",num:4,citation:"banqueroute à ce fatras de lois",ref:"(v. 4)",procede:"métaphore financière + terme péjoratif",analyse:`La <span class="procede-type">métaphore financière</span> (« banqueroute ») et le <span class="procede-type">terme péjoratif</span> (« fatras ») rejettent son passé d'étudiant avec un profond mépris.`}
         ]},
       { id:"c-t1-mvt2", mouvement:2, titre:"Le théâtre des Tuileries", vers:"v. 5-11",
@@ -129,7 +129,7 @@ const SEED = {
           {id:"p-c1m2-1",num:1,citation:"dedans les Tuileries",ref:"(v. 5)",procede:"didascalie interne",analyse:`La <span class="procede-type">didascalie interne</span> ancre l'action dans un lieu mondain de parade.`},
           {id:"p-c1m2-2",num:2,citation:"le pays du beau monde et des galanteries",ref:"(v. 6)",procede:"périphrase élogieuse",analyse:`La <span class="procede-type">périphrase élogieuse</span> définit le nouveau système de valeurs de Dorante : l'apparence et la séduction.`},
           {id:"p-c1m2-3",num:3,citation:"dis-moi, me trouves-tu bien fait en cavalier ?",ref:"(v. 7)",procede:"interrogation directe",analyse:`L'<span class="procede-type">interrogation directe</span> trahit le narcissisme de Dorante et son besoin de validation.`},
-          {id:"p-c1m2-4",num:4,citation:"Ne vois-tu rien en moi qui sente l'écolier ?",ref:"(v. 8)",procede:"phrase interro-négative + antithèse",analyse:`La <span class="procede-type">phrase interro-négative</span> et l'<span class="procede-type">antithèse</span> (cavalier / écolier) révèlent son insécurité.`},
+          {id:"p-c1m2-4",num:4,citation:"Ne vois-tu rien en moi qui sente l'écolier ?",ref:"(v. 8)",procede:"phrase interro-négative + antithèse",analyse:`La <span class="procede-type">phrase interro-négative</span> et l'<span class="procede-type">antithèse</span> (cavalier / écolier) révèlent son insécurité face à son ancienne identité.`},
           {id:"p-c1m2-5",num:5,citation:"aux royaumes du code / on apprenne à se faire un visage à la mode",ref:"(v. 9-10)",procede:"allégorie + métaphore de fabrication",analyse:`L'<span class="procede-type">allégorie</span> austère de l'université s'oppose à la <span class="procede-type">métaphore de la fabrication</span> du visage, dévoilant une identité conçue comme un simple masque.`},
           {id:"p-c1m2-6",num:6,citation:"j'ai lieu d'appréhender...",ref:"(v. 11)",procede:"aposiopèse",analyse:`L'<span class="procede-type">aposiopèse</span> (interruption) par le valet donne un rythme vif à l'échange comique.`}
         ]},
@@ -138,7 +138,7 @@ const SEED = {
           {id:"p-c1m3-1",num:1,citation:"vous ferez en une heure ici mille jaloux",ref:"(v. 12)",procede:"hyperbole chiffrée",analyse:`L'<span class="procede-type">hyperbole chiffrée</span> de Cliton flatte l'ego de son maître.`},
           {id:"p-c1m3-2",num:2,citation:"Ce visage et ce port n'ont point l'air de l'école",ref:"(v. 13)",procede:"parallélisme",analyse:`Le <span class="procede-type">parallélisme</span> souligne la transformation purement physique.`},
           {id:"p-c1m3-3",num:3,citation:"jamais comme vous on ne peignit Bartole",ref:"(v. 14)",procede:"référence culturelle comique",analyse:`La <span class="procede-type">référence culturelle comique</span> (Bartole, vieux juriste) crée un contraste par l'absurde avec la beauté de Dorante.`},
-          {id:"p-c1m3-4",num:4,citation:"je prévois du malheur pour beaucoup de maris",ref:"(v. 15)",procede:"prolepse",analyse:`Cette <span class="procede-type">prolepse</span> dramatique annonce les intrigues amoureuses à venir.`},
+          {id:"p-c1m3-4",num:4,citation:"je prévois du malheur pour beaucoup de maris",ref:"(v. 15)",procede:"prolepse dramatique",analyse:`Cette <span class="procede-type">prolepse dramatique</span> annonce les intrigues amoureuses à venir.`},
           {id:"p-c1m3-5",num:5,citation:"Mais que vous semble encor maintenant de Paris ?",ref:"(v. 16)",procede:"question de relance",analyse:`La <span class="procede-type">question de relance</span> permet à Dorante d'exposer sa philosophie.`}
         ]},
       { id:"c-t1-mvt4", mouvement:4, titre:"Le projet galant", vers:"v. 17-21",
@@ -146,7 +146,185 @@ const SEED = {
           {id:"p-c1m4-1",num:1,citation:"J'en trouve l'air bien doux, et cette loi bien rude",ref:"(v. 17)",procede:"parallélisme antithétique",analyse:`Le <span class="procede-type">parallélisme antithétique</span> justifie son choix moral du plaisir contre la contrainte.`},
           {id:"p-c1m4-2",num:2,citation:"banni sous prétexte d'étude",ref:"(v. 18)",procede:"lexique de l'exil + ironie",analyse:`Le lexique dramatique de l'<span class="procede-type">exil</span> (« banni ») et le nom ironique « prétexte » dévaluent totalement l'éducation.`},
           {id:"p-c1m4-3",num:3,citation:"divertir / ayant eu le bonheur de n'en jamais sortir",ref:"(v. 19-20)",procede:"champ lexical de la jouissance",analyse:`Le <span class="procede-type">champ lexical de la jouissance</span> montre la complicité hédoniste entre le maître et le valet.`},
-          {id:"p-c1m4-4",num:4,citation:"dis-moi comme en ce lieu l'on gouverne les dames",ref:"(v. 21)",procede:"métaphore militaire",analyse:`La <span class="procede-type">métaphore militaire et politique</span> (« gouverne ») résume l'amour à une stratégie de conquête.`}
+          {id:"p-c1m4-4",num:4,citation:"dis-moi comme en ce lieu l'on gouverne les dames",ref:"(v. 21)",procede:"métaphore militaire et politique",analyse:`La <span class="procede-type">métaphore militaire et politique</span> (« gouverne ») résume l'amour à une stratégie de conquête.`}
+        ]}
+    ],
+    "c-t2": [
+      { id:"c-t2-mvt1", mouvement:1, titre:"L'obstination spectaculaire", vers:"v. 963-967",
+        procedes:[
+          {id:"p-c2m1-1",num:1,citation:"Impossible ! Ah ! Pour vous",ref:"(v. 963)",procede:"cascade d'exclamations",analyse:`La <span class="procede-type">cascade d'exclamations</span> feint une surprise totale pour esquiver et gagner du temps.`},
+          {id:"p-c2m1-2",num:2,citation:"je pourrai tout, madame, en tous lieux, contre tous.",ref:"(v. 964)",procede:"hyperbole galante + allitération en [t]",analyse:`L'<span class="procede-type">hyperbole galante</span> et l'<span class="procede-type">allitération en [t]</span> constituent une feinte héroïque pour détourner l'accusation vers le sentimentalisme.`},
+          {id:"p-c2m1-3",num:3,citation:"Jusqu'à vous marier, quand je sais que vous l'êtes ?",ref:"(v. 965)",procede:"question accusatrice",analyse:`La <span class="procede-type">question accusatrice</span> de Clarice bloque la parade de Dorante.`},
+          {id:"p-c2m1-4",num:4,citation:"Moi, marié ! Ce sont pièces qu'on vous a faites",ref:"(v. 966)",procede:"apostrophe à soi-même + métaphore théâtrale",analyse:`L'<span class="procede-type">apostrophe à soi-même</span> renforce l'aplomb du menteur, tandis que la <span class="procede-type">métaphore théâtrale</span> (« pièces ») accuse autrui de faire des mises en scène.`}
+        ]},
+      { id:"c-t2-mvt2", mouvement:2, titre:"Le menteur démasqué", vers:"v. 968-971",
+        procedes:[
+          {id:"p-c2m2-1",num:1,citation:"Est-il un plus grand fourbe ? / Il ne sait que mentir.",ref:"(v. 968)",procede:"question rhétorique + négation restrictive",analyse:`La <span class="procede-type">question rhétorique</span> de Clarice et la <span class="procede-type">négation restrictive</span> de Lucrèce encerclent Dorante et réduisent son identité à son vice.`},
+          {id:"p-c2m2-2",num:2,citation:"Je ne le fus jamais",ref:"(v. 969)",procede:"négation absolue au passé simple",analyse:`La <span class="procede-type">négation absolue</span> conjuguée au passé simple montre une audace suicidaire face à l'évidence.`},
+          {id:"p-c2m2-3",num:3,citation:"on pense...",ref:"(v. 970)",procede:"aposiopèse",analyse:`L'<span class="procede-type">aposiopèse</span> témoigne de la perte de contrôle rhétorique du héros, qui bégaie.`},
+          {id:"p-c2m2-4",num:4,citation:"Et vous pensez encor que je vous croie ?",ref:"(v. 970)",procede:"interrogation sarcastique",analyse:`L'<span class="procede-type">interrogation sarcastique</span> de Clarice détruit le masque galant.`}
+        ]},
+      { id:"c-t2-mvt3", mouvement:3, titre:"La surenchère des serments", vers:"v. 972-983",
+        procedes:[
+          {id:"p-c2m3-1",num:1,citation:"Que le foudre à vos yeux m'écrase, si je mens !",ref:"(v. 972)",procede:"invocation mythologique",analyse:`L'<span class="procede-type">invocation mythologique</span> relève du registre tragique, détourné ici pour un effet comique de disproportion.`},
+          {id:"p-c2m3-2",num:2,citation:"Un menteur est toujours prodigue de serments.",ref:"(v. 973)",procede:"maxime morale",analyse:`La <span class="procede-type">maxime morale</span> de Clarice neutralise immédiatement le sortilège de Dorante.`},
+          {id:"p-c2m3-3",num:3,citation:"cessez d'être en balance",ref:"(v. 976)",procede:"métaphore de la pesée",analyse:`La <span class="procede-type">métaphore de la pesée</span> traduit la volonté pathétique de Dorante de reprendre l'ascendant psychologique.`},
+          {id:"p-c2m3-4",num:4,citation:"tant son effronterie / avec naïveté pousse une menterie.",ref:"(v. 978-979)",procede:"oxymore",analyse:`Cet <span class="procede-type">oxymore</span> (effronterie / naïveté) est l'essence même du génie comique de Dorante.`},
+          {id:"p-c2m3-5",num:5,citation:"agréez que demain / en qualité d'époux je vous donne la main.",ref:"(v. 980-981)",procede:"lexique formel de l'engagement",analyse:`Le <span class="procede-type">lexique formel de l'engagement</span> montre le menteur cherchant à écraser un vieux mensonge par un nouveau.`},
+          {id:"p-c2m3-6",num:6,citation:"Eh ! Vous la donneriez en un jour à deux mille.",ref:"(v. 982)",procede:"hyperbole sarcastique",analyse:`L'<span class="procede-type">hyperbole sarcastique</span> de Clarice scelle l'échec de Dorante.`}
+        ]},
+      { id:"c-t2-mvt4", mouvement:4, titre:"Le gouffre entre le mythe et la réalité", vers:"v. 984-994",
+        procedes:[
+          {id:"p-c2m4-1",num:1,citation:"en crédit si grand, que j'en crains les jaloux.",ref:"(v. 984-985)",procede:"autoglorification",analyse:`Cette <span class="procede-type">autoglorification</span> illustre le déni de réalité total de Dorante.`},
+          {id:"p-c2m4-2",num:2,citation:"un grand foudre de guerre",ref:"(v. 986-987)",procede:"anaphore + reprise ironique du vocabulaire épique",analyse:`L'<span class="procede-type">anaphore</span> et la <span class="procede-type">reprise ironique du vocabulaire épique</span> ridiculisent Dorante par la bouche même de Clarice.`},
+          {id:"p-c2m4-3",num:3,citation:"n'en a vu qu'à coups d'écritoire ou de verre",ref:"(v. 988)",procede:"antithèse triviale",analyse:`L'<span class="procede-type">antithèse triviale</span> rabaisse l'héroïsme au rang d'ivrognerie ou d'études ennuyeuses.`},
+          {id:"p-c2m4-4",num:4,citation:"qui vint hier [...] depuis une année il fait ici sa cour",ref:"(v. 989-990)",procede:"antithèse temporelle",analyse:`L'<span class="procede-type">antithèse temporelle</span> expose mathématiquement le mensonge.`},
+          {id:"p-c2m4-5",num:5,citation:"festin, musique [...] dans son lit passée en tout silence",ref:"(v. 991-992)",procede:"antithèse situationnelle",analyse:`La violente <span class="procede-type">antithèse situationnelle</span> confronte l'hallucination mondaine à la réalité solitaire.`},
+          {id:"p-c2m4-6",num:6,citation:"s'en dédit / sa méthode est jolie à se mettre en crédit !",ref:"(v. 993-994)",procede:"paronomase + antiphrase exclamative",analyse:`La <span class="procede-type">paronomase</span> (dit/dédit) et l'<span class="procede-type">antiphrase exclamative</span> valident le triomphe de Clarice et la faillite sociale de Dorante.`}
+        ]}
+    ],
+    "c-t3": [
+      { id:"c-t3-mvt1", mouvement:1, titre:"La révélation exaspérée", vers:"v. 1713-1717",
+        procedes:[
+          {id:"p-c3m1-1",num:1,citation:"Mais enfin vous n'avez que mépris pour Clarice ?",ref:"(v. 1713)",procede:"négation restrictive + interrogation",analyse:`La <span class="procede-type">négation restrictive</span> et l'interrogation soulignent la fin des illusions de la jeune femme.`},
+          {id:"p-c3m1-2",num:2,citation:"Mais enfin vous savez le nœud de l'artifice",ref:"(v. 1714)",procede:"anaphore + métaphore dramatique",analyse:`L'<span class="procede-type">anaphore</span> de « Mais enfin » et la <span class="procede-type">métaphore dramatique</span> (« nœud ») explicitent la fin de la manipulation scénaristique.`},
+          {id:"p-c3m1-3",num:3,citation:"Je ne sais plus moi-même... où j'en suis.",ref:"(v. 1716)",procede:"aveu de confusion",analyse:`L'<span class="procede-type">aveu de confusion</span> de Clarice montre l'épuisement mental causé par les mensonges répétés de Dorante.`},
+          {id:"p-c3m1-4",num:4,citation:"Lucrèce ! Que dit-elle ?",ref:"(v. 1717)",procede:"stichomythie",analyse:`La <span class="procede-type">stichomythie</span> donne une impulsion nerveuse qui accélère le rythme vers l'éclatement de la vérité.`}
+        ]},
+      { id:"c-t3-mvt2", mouvement:2, titre:"La lucidité brutale de Cliton", vers:"v. 1718-1722",
+        procedes:[
+          {id:"p-c3m2-1",num:1,citation:"Vous en tenez, monsieur",ref:"(v. 1718)",procede:"expression familière",analyse:`L'<span class="procede-type">expression familière</span> du valet tranche avec le vernis aristocratique et ramène Dorante au réel.`},
+          {id:"p-c3m2-2",num:2,citation:"et vous auriez perdu si vous aviez gagé.",ref:"(v. 1720)",procede:"champ lexical du jeu",analyse:`Le <span class="procede-type">champ lexical du jeu</span> définit la vérité de Dorante comme une simple loterie, réduisant ses mensonges à un pari hasardeux.`},
+          {id:"p-c3m2-3",num:3,citation:"Cette nuit à la voix j'ai cru la reconnoître.",ref:"(v. 1721)",procede:"lexique de la sensorialité trompeuse",analyse:`La justification repose sur le <span class="procede-type">lexique de la sensorialité trompeuse</span> (la nuit, la voix) — Dorante se donne une excuse commode.`},
+          {id:"p-c3m2-4",num:4,citation:"Clarice sous son nom parloit à sa fenêtre",ref:"(v. 1722)",procede:"explication factuelle",analyse:`Cliton produit l'<span class="procede-type">explication factuelle</span> qui résout objectivement le quiproquo du balcon.`}
+        ]},
+      { id:"c-t3-mvt3", mouvement:3, titre:"Le rebond cynique", vers:"v. 1725-1731",
+        procedes:[
+          {id:"p-c3m3-1",num:1,citation:"Bonne bouche, j'en tiens ; mais l'autre la vaut bien",ref:"(v. 1725)",procede:"évaluation marchande cynique",analyse:`L'<span class="procede-type">évaluation marchande cynique</span> de Dorante prouve son inconstance absolue : une femme en vaut une autre.`},
+          {id:"p-c3m3-2",num:2,citation:"mon cœur déjà penchoit où mon erreur le jette.",ref:"(v. 1726)",procede:"personnification + rationalisation a posteriori",analyse:`La <span class="procede-type">personnification du cœur</span> et la <span class="procede-type">rationalisation a posteriori</span> transforment génialement sa stupidité en fatalité amoureuse.`},
+          {id:"p-c3m3-3",num:3,citation:"jouer un nouveau jeu.",ref:"(v. 1728)",procede:"polyptote",analyse:`Le <span class="procede-type">polyptote</span> confirme que la vie sentimentale n'est pour Dorante qu'une scène de théâtre permanente.`},
+          {id:"p-c3m3-4",num:4,citation:"Sans changer de discours changeons de batterie.",ref:"(v. 1729)",procede:"métaphore de l'artillerie militaire",analyse:`La <span class="procede-type">métaphore de l'artillerie militaire</span> montre que le mensonge est une munition recyclable à l'infini.`},
+          {id:"p-c3m3-5",num:5,citation:"Voyons le dernier point de son effronterie",ref:"(v. 1730)",procede:"hyperbole spectaculaire",analyse:`L'<span class="procede-type">hyperbole spectaculaire</span> de Lucrèce transforme la fin de la pièce en exhibition théâtrale.`}
+        ]}
+    ],
+    "f-t1": [
+      { id:"f-t1-mvt1", mouvement:1, titre:"Le pacte de lecture", vers:"l. 1-6",
+        procedes:[
+          {id:"p-f1m1-1",num:1,citation:"Vous voulez, Monsieur, que je vous rende un compte exact",ref:"(l. 1)",procede:"registre épistolaire",analyse:`Le <span class="procede-type">registre épistolaire</span> ancre la fiction dans une vérité immédiate et intime.`},
+          {id:"p-f1m1-2",num:2,citation:"ce qu'il y a de pis, un livre de philosophie",ref:"(l. 3)",procede:"autodérision",analyse:`L'<span class="procede-type">autodérision</span> désamorce les craintes du lecteur mondain face au jargon scientifique.`},
+          {id:"p-f1m1-3",num:3,citation:"fêtes... jeu ou de chasse / [...] planètes, mondes, tourbillons",ref:"(l. 4-5)",procede:"antithèse + accumulation cosmique",analyse:`L'<span class="procede-type">antithèse</span> et l'<span class="procede-type">accumulation cosmique</span> remplacent les plaisirs terrestres par un horizon merveilleux.`},
+          {id:"p-f1m1-4",num:4,citation:"Heureusement vous êtes philosophe",ref:"(l. 6)",procede:"captatio benevolentiae",analyse:`La <span class="procede-type">captatio benevolentiae</span> flatte l'esprit du lecteur et l'invite à se sentir à la hauteur du sujet.`}
+        ]},
+      { id:"f-t1-mvt2", mouvement:2, titre:"La Marquise, trophée philosophique", vers:"l. 7-14",
+        procedes:[
+          {id:"p-f1m2-1",num:1,citation:"attiré Madame la Marquise dans le parti de la philosophie.",ref:"(l. 7-8)",procede:"métaphore de l'engagement politique",analyse:`La <span class="procede-type">métaphore de l'engagement politique ou militaire</span> transforme la leçon en conquête intellectuelle.`},
+          {id:"p-f1m2-2",num:2,citation:"la beauté et la jeunesse sont toujours des choses d'un grand prix.",ref:"(l. 9)",procede:"lexique de l'estimation",analyse:`Le <span class="procede-type">lexique de l'estimation</span> montre que la science s'orne des atours de la séduction mondaine.`},
+          {id:"p-f1m2-3",num:3,citation:"si la sagesse elle-même voulait se présenter... sous une figure",ref:"(l. 10-12)",procede:"allégorie de la Sagesse",analyse:`L'<span class="procede-type">allégorie de la Sagesse</span> incarnée par la Marquise charnalise l'abstraction philosophique.`},
+          {id:"p-f1m2-4",num:4,citation:"tout le monde courrait après la sagesse.",ref:"(l. 14)",procede:"hyperbole",analyse:`L'<span class="procede-type">hyperbole</span> souligne l'efficacité redoutable de cette méthode d'enseignement par la séduction.`}
+        ]},
+      { id:"f-t1-mvt3", mouvement:3, titre:"L'éloge d'un esprit moderne", vers:"l. 14-20",
+        procedes:[
+          {id:"p-f1m3-1",num:1,citation:"répéter ce qu'elle dit de la manière dont elle l'a dit.",ref:"(l. 16)",procede:"parallélisme",analyse:`Le <span class="procede-type">parallélisme</span> prouve que la forme de la pensée compte autant que le fond.`},
+          {id:"p-f1m3-2",num:2,citation:"cette vivacité d'intelligence",ref:"(l. 17)",procede:"éloge explicite",analyse:`L'<span class="procede-type">éloge explicite</span> définit l'intuition vive comme supérieure à l'érudition classique.`},
+          {id:"p-f1m3-3",num:3,citation:"Qu'est-ce qui lui manque ? D'avoir ouvert les yeux sur des livres",ref:"(l. 18-19)",procede:"question rhétorique paradoxale",analyse:`La <span class="procede-type">question rhétorique paradoxale</span> minimise l'enseignement classique et valorise l'intelligence naturelle.`},
+          {id:"p-f1m3-4",num:4,citation:"à qui je refuserais... le nom de savants.",ref:"(l. 20)",procede:"paradoxe",analyse:`L'emploi du <span class="procede-type">paradoxe</span> permet de critiquer ouvertement les pédants de l'université.`}
+        ]},
+      { id:"f-t1-mvt4", mouvement:4, titre:"Le cadre narratif des entretiens", vers:"l. 21-27",
+        procedes:[
+          {id:"p-f1m4-1",num:1,citation:"je serais en droit de vous décrire le château",ref:"(l. 22)",procede:"prétérition",analyse:`La <span class="procede-type">prétérition</span> évacue la description inutile pour valoriser le débat d'idées.`},
+          {id:"p-f1m4-2",num:2,citation:"je n'y trouvai point de compagnie, et j'en fus fort aise.",ref:"(l. 24)",procede:"insistance sur l'intimité",analyse:`L'<span class="procede-type">insistance sur l'intimité</span> installe le climat de la confidence amoureuse, propice à la transmission du savoir.`},
+          {id:"p-f1m4-3",num:3,citation:"épuiser les nouvelles de Paris",ref:"(l. 25-26)",procede:"hyperbole",analyse:`L'<span class="procede-type">hyperbole</span> montre la transition nécessaire entre le bavardage vain et la science.`},
+          {id:"p-f1m4-4",num:4,citation:"Je vous les diviserai par soirs",ref:"(l. 27)",procede:"annonce structurante",analyse:`L'<span class="procede-type">annonce de la structuration narrative</span> promet une progression typique des contes, rendant la science désirable.`}
+        ]}
+    ],
+    "f-t2": [
+      { id:"f-t2-mvt1", mouvement:1, titre:"La geste héroïque de Copernic", vers:"l. 1-12",
+        procedes:[
+          {id:"p-f2m1-1",num:1,citation:"qui fait main basse",ref:"(l. 2)",procede:"métaphore guerrière",analyse:`La <span class="procede-type">métaphore guerrière</span> présente Copernic comme le destructeur triomphant des erreurs antiques.`},
+          {id:"p-f2m1-2",num:2,citation:"Saisi d'une noble fureur d'astronome",ref:"(l. 4)",procede:"oxymore",analyse:`L'<span class="procede-type">oxymore</span> élève la passion scientifique froide au rang de fureur divine ou épique.`},
+          {id:"p-f2m1-3",num:3,citation:"il prend la Terre et l'envoie bien loin",ref:"(l. 4-5)",procede:"personnification désinvolte",analyse:`La <span class="procede-type">personnification désinvolte</span> dégrade la Terre, la traitant comme un vulgaire caillou que l'on jette.`},
+          {id:"p-f2m1-4",num:4,citation:"pour la punir du long repos qu'elle s'étoit attribué",ref:"(l. 8-9)",procede:"personnification moralisatrice",analyse:`La <span class="procede-type">personnification moralisatrice</span> justifie la mécanique gravitationnelle par une punition humoristique.`}
+        ]},
+      { id:"f-t2-mvt2", mouvement:2, titre:"La résistance du bon sens", vers:"l. 12-16",
+        procedes:[
+          {id:"p-f2m2-1",num:1,citation:"Attendez un peu, dit la Marquise",ref:"(l. 13)",procede:"injonction à l'impératif",analyse:`L'<span class="procede-type">injonction à l'impératif</span> incarne la résistance naturelle du bon sens face au lyrisme scientifique.`},
+          {id:"p-f2m2-2",num:2,citation:"expliquer les choses si pompeusement",ref:"(l. 14)",procede:"critique méta-discursive",analyse:`La <span class="procede-type">critique méta-discursive</span> de l'élève condamne le lyrisme vide et contraint le narrateur à la rigueur.`},
+          {id:"p-f2m2-3",num:3,citation:"je ne crois pas les avoir entendues.",ref:"(l. 15)",procede:"aveu d'incompréhension",analyse:`Cet <span class="procede-type">aveu d'incompréhension</span> contraint le narrateur à la stricte pédagogie.`},
+          {id:"p-f2m2-4",num:4,citation:"immobile, après lui, qu'est-ce qui suit ?",ref:"(l. 16)",procede:"interrogation spatiale",analyse:`L'<span class="procede-type">interrogation spatiale</span> recadre le discours sur des bases géométriques claires.`}
+        ]},
+      { id:"f-t2-mvt3", mouvement:3, titre:"La cartographie du système solaire", vers:"l. 15-21",
+        procedes:[
+          {id:"p-f2m3-1",num:1,citation:"C'est Mercure... Au-dessus... Ensuite vient la Terre... Enfin suivent Mars, Jupiter",ref:"(l. 17-20)",procede:"énumération spatiale ordonnée",analyse:`L'<span class="procede-type">énumération spatiale ordonnée</span> construit une carte visuelle et rassurante du cosmos.`},
+          {id:"p-f2m3-2",num:2,citation:"le plus grand cercle de tous",ref:"(l. 21)",procede:"superlatif",analyse:`L'utilisation du <span class="procede-type">superlatif</span> pour Saturne exprime l'immensité tout en la gardant mesurable.`},
+          {id:"p-f2m3-3",num:3,citation:"Et la Lune, vous l'oubliez",ref:"(l. 22)",procede:"interruption de l'élève",analyse:`L'<span class="procede-type">interruption de l'élève</span> prouve la réussite de la leçon : la Marquise détecte elle-même l'anomalie du modèle.`}
+        ]},
+      { id:"f-t2-mvt4", mouvement:4, titre:"L'orbite affective de la Lune", vers:"l. 21-26",
+        procedes:[
+          {id:"p-f2m4-1",num:1,citation:"Je la retrouverai bien",ref:"(l. 23)",procede:"ironie désinvolte",analyse:`L'<span class="procede-type">ironie désinvolte</span> dédramatise la complexité de l'univers.`},
+          {id:"p-f2m4-2",num:2,citation:"ne l'abandonne point... la suit",ref:"(l. 24)",procede:"personnification affective intense",analyse:`L'<span class="procede-type">personnification affective intense</span> transforme l'attraction physique en fidélité conjugale.`},
+          {id:"p-f2m4-3",num:3,citation:"ce n'est que pour ne point quitter la Terre.",ref:"(l. 25-26)",procede:"explication finaliste",analyse:`Cette <span class="procede-type">explication finaliste</span> donne un but émotionnel au mouvement mécanique, le rendant compréhensible pour une mondaine.`}
+        ]}
+    ],
+    "f-t3": [
+      { id:"f-t3-mvt1", mouvement:1, titre:"Le flirt protecteur", vers:"l. 1-4",
+        procedes:[
+          {id:"p-f3m1-1",num:1,citation:"ne vous gâtent point de beaux yeux, ou une belle bouche",ref:"(l. 1)",procede:"champ lexical de la galanterie",analyse:`Le <span class="procede-type">champ lexical de la galanterie</span> ancre le discours abstrait dans la corporalité rassurante de la beauté.`},
+          {id:"p-f3m1-2",num:2,citation:"en dépit de tous les mondes possibles.",ref:"(l. 2)",procede:"hyperbole vertigineuse",analyse:`Cette <span class="procede-type">hyperbole vertigineuse</span> exalte la valeur de l'individu face au vide de l'univers infini.`},
+          {id:"p-f3m1-3",num:3,citation:"C'est une étrange chose que l'amour",ref:"(l. 3)",procede:"sentence philosophique",analyse:`L'emploi de la <span class="procede-type">sentence philosophique</span> prouve l'autonomie intellectuelle de la Marquise.`},
+          {id:"p-f3m1-4",num:4,citation:"répondit-elle, en riant",ref:"(l. 3)",procede:"complément de manière",analyse:`Le <span class="procede-type">complément de manière</span> rappelle que le savoir est indissociable du plaisir.`}
+        ]},
+      { id:"f-t3-mvt2", mouvement:2, titre:"La bascule épistémologique", vers:"l. 4-10",
+        procedes:[
+          {id:"p-f3m2-1",num:1,citation:"Ne me déguisez rien, je vous garderai le secret.",ref:"(l. 5)",procede:"ton de la confidence",analyse:`Le <span class="procede-type">ton de la confidence</span> masque une véritable exigence d'honnêteté scientifique.`},
+          {id:"p-f3m2-2",num:2,citation:"appuyé que sur une petite convenance bien légère.",ref:"(l. 6-7)",procede:"euphémisme",analyse:`Cet <span class="procede-type">euphémisme</span> montre que la Marquise perçoit la fragilité des hypothèses induites.`},
+          {id:"p-f3m2-3",num:3,citation:"Cela est-il d'une nécessité bien absolue ?",ref:"(l. 10)",procede:"interrogation directe",analyse:`L'<span class="procede-type">interrogation directe</span> confronte le savant à l'exigence de preuve.`}
+        ]},
+      { id:"f-t3-mvt3", mouvement:3, titre:"L'analogie séductrice", vers:"l. 8-19",
+        procedes:[
+          {id:"p-f3m3-1",num:1,citation:"mêler toujours des folies de galanterie à nos discours",ref:"(l. 11)",procede:"aveu de méthode",analyse:`L'<span class="procede-type">aveu de méthode</span> justifie ouvertement l'esthétique galante du livre.`},
+          {id:"p-f3m3-2",num:2,citation:"les raisonnemens de mathématique sont faits comme l'amour.",ref:"(l. 12-13)",procede:"immense comparaison",analyse:`Cette <span class="procede-type">immense comparaison</span> affirme que la logique contraint l'esprit comme la passion contraint le cœur.`},
+          {id:"p-f3m3-3",num:3,citation:"accorder si peu... lui en accorder davantage",ref:"(l. 14)",procede:"parallélisme + gradation",analyse:`Le <span class="procede-type">parallélisme</span> et la <span class="procede-type">gradation</span> modélisent l'engrenage fatal de l'induction mathématique.`},
+          {id:"p-f3m3-4",num:4,citation:"malgré vous-même, il vous mène si loin",ref:"(l. 16-17)",procede:"personnification du mathématicien/amant",analyse:`La <span class="procede-type">personnification du mathématicien/amant</span> souligne la toute-puissance du raisonnement en chaîne.`},
+          {id:"p-f3m3-5",num:5,citation:"Ces deux sortes de gens-là prennent toujours plus qu'on ne leur donne.",ref:"(l. 18-19)",procede:"synthèse satirique",analyse:`La <span class="procede-type">synthèse satirique</span> clôt l'analogie par un trait d'esprit mémorable.`}
+        ]},
+      { id:"f-t3-mvt4", mouvement:4, titre:"La vertigineuse conclusion", vers:"l. 18-33",
+        procedes:[
+          {id:"p-f3m4-1",num:1,citation:"quand deux choses sont semblables en tout...",ref:"(l. 20-21)",procede:"définition du syllogisme analogique",analyse:`La <span class="procede-type">définition du syllogisme analogique</span> offre les clés de la pensée scientifique moderne.`},
+          {id:"p-f3m4-2",num:2,citation:"j'ai tiré que la Lune étoit habitée... parce qu'elles ressemblent",ref:"(l. 22-23)",procede:"illustration concrète de la déduction",analyse:`L'<span class="procede-type">illustration concrète de la déduction</span> montre la loi énoncée précédemment à l'œuvre.`},
+          {id:"p-f3m4-3",num:3,citation:"il faut franchir le pas de bonne grâce.",ref:"(l. 26)",procede:"métaphore de la reddition",analyse:`La <span class="procede-type">métaphore de la reddition</span> exige de l'élève qu'elle accepte les conclusions extrêmes de la logique.`},
+          {id:"p-f3m4-4",num:4,citation:"ne le voient que comme une petite étoile fixe",ref:"(l. 28-29)",procede:"antithèse visuelle",analyse:`La puissante <span class="procede-type">antithèse visuelle</span> (soleil immense / petite étoile) démontre la parfaite compréhension de la Marquise, qui énonce elle-même la relativité du monde.`}
+        ]}
+    ],
+    "r-t1": [
+      { id:"r-t1-mvt1", mouvement:1, titre:"L'exposition glaciale de la misère", vers:"v. 1-6",
+        procedes:[
+          {id:"p-r1m1-1",num:1,citation:"Noirs dans la neige et dans la brume",ref:"(v. 1)",procede:"antithèse chromatique",analyse:`L'<span class="procede-type">antithèse chromatique</span> engloutit immédiatement les enfants dans un froid mortel.`},
+          {id:"p-r1m1-2",num:2,citation:"Leurs culs en rond",ref:"(v. 3)",procede:"registre trivial",analyse:`L'usage du <span class="procede-type">registre trivial</span> animalise les victimes, réduites à des corps souffrants.`},
+          {id:"p-r1m1-3",num:3,citation:"misère !",ref:"(v. 4)",procede:"apostrophe exclamative",analyse:`Cette soudaine <span class="procede-type">apostrophe exclamative</span> traduit l'indignation personnelle de Rimbaud.`},
+          {id:"p-r1m1-4",num:4,citation:"Regardent le boulanger faire",ref:"(v. 5)",procede:"verbe de perception passive",analyse:`Le <span class="procede-type">verbe de perception passive</span> marque leur mise à l'écart radicale du cycle de la nourriture.`},
+          {id:"p-r1m1-5",num:5,citation:"Le lourd pain blond",ref:"(v. 6)",procede:"adjectif de matérialité + couleur or",analyse:`L'adjectif de <span class="procede-type">matérialité</span> (« lourd ») et la <span class="procede-type">couleur or</span> (« blond ») sacralisent la richesse inaccessible.`}
+        ]},
+      { id:"r-t1-mvt2", mouvement:2, titre:"La féerie du démiurge", vers:"v. 7-12",
+        procedes:[
+          {id:"p-r1m2-1",num:1,citation:"le fort bras blanc qui tourne",ref:"(v. 8)",procede:"allitération en [b] + synecdoque",analyse:`L'<span class="procede-type">allitération en [b]</span> et la <span class="procede-type">synecdoque</span> donnent au boulanger l'apparence d'une force créatrice mécanique et toute-puissante.`},
+          {id:"p-r1m2-2",num:2,citation:"Dans un trou clair.",ref:"(v. 10)",procede:"métaphore lumineuse",analyse:`La <span class="procede-type">métaphore lumineuse</span> isole le four comme un centre de vie éclatant.`},
+          {id:"p-r1m2-3",num:3,citation:"écoutent le bon pain cuire.",ref:"(v. 11)",procede:"synesthésie",analyse:`L'utilisation de la <span class="procede-type">synesthésie</span> montre leurs sens aiguisés par l'odeur et la faim.`},
+          {id:"p-r1m2-4",num:4,citation:"Le boulanger au gras sourire / Chante",ref:"(v. 12-13)",procede:"adjectif péjoratif",analyse:`L'<span class="procede-type">adjectif péjoratif</span> (« gras ») traduit le dégoût du poète pour l'indifférence cruelle des nantis face au besoin.`}
+        ]},
+      { id:"r-t1-mvt3", mouvement:3, titre:"La chaleur matricielle", vers:"v. 13-24",
+        procedes:[
+          {id:"p-r1m3-1",num:1,citation:"Ils sont blottis, pas un ne bouge",ref:"(v. 14)",procede:"animalisation de survie",analyse:`L'<span class="procede-type">animalisation de survie</span> évoque des bêtes terrées contre le froid.`},
+          {id:"p-r1m3-2",num:2,citation:"Chaud comme un sein.",ref:"(v. 16)",procede:"comparaison maternelle",analyse:`La <span class="procede-type">comparaison maternelle</span> d'une immense cruauté souligne que la seule « mère » de ces enfants est une machine industrielle.`},
+          {id:"p-r1m3-3",num:3,citation:"Chantent les croûtes parfumées",ref:"(v. 21)",procede:"personnification",analyse:`La <span class="procede-type">personnification</span> anime le pain, exacerbant la torture sensorielle des enfants.`},
+          {id:"p-r1m3-4",num:4,citation:"ont leur âme si ravie / Sous leurs haillons",ref:"(v. 23-24)",procede:"antithèse",analyse:`L'<span class="procede-type">antithèse saisissante</span> entre la misère textile (« haillons ») et l'élévation spirituelle (« âme ») sacralise leur souffrance.`}
+        ]},
+      { id:"r-t1-mvt4", mouvement:4, titre:"Le réveil à l'atrocité", vers:"v. 25-35",
+        procedes:[
+          {id:"p-r1m4-1",num:1,citation:"Collant leurs petits museaux roses",ref:"(v. 27)",procede:"métaphore animale et chromatique",analyse:`La <span class="procede-type">métaphore animale et chromatique</span> allie la dégradation de la misère à l'innocence enfantine.`},
+          {id:"p-r1m4-2",num:2,citation:"comme une prière…",ref:"(v. 30)",procede:"comparaison religieuse",analyse:`La <span class="procede-type">comparaison religieuse</span> dévoile l'impuissance absolue de l'humain face à la faim.`},
+          {id:"p-r1m4-3",num:3,citation:"Du ciel rouvert",ref:"(v. 32)",procede:"métaphore sacrée",analyse:`La <span class="procede-type">métaphore sacrée</span> du four comme paradis terrestre condamne une société qui affame ses membres.`},
+          {id:"p-r1m4-4",num:4,citation:"qu'ils crèvent leur culotte",ref:"(v. 34)",procede:"verbe vulgaire et violent",analyse:`Le <span class="procede-type">verbe vulgaire et violent</span> brise la liturgie en un éclair de réalisme désespérant.`},
+          {id:"p-r1m4-5",num:5,citation:"lange blanc tremblotte",ref:"(v. 35)",procede:"détail pathétique",analyse:`Le <span class="procede-type">détail pathétique</span> de la prime enfance (« lange ») fige les victimes dans la cruauté du vent hivernal.`}
         ]}
     ],
     "r-t2": [
@@ -154,7 +332,7 @@ const SEED = {
         procedes:[
           {id:"p-r2m1-1",num:1,citation:"les crachats rouges de la mitraille",ref:"(v. 1)",procede:"métaphore organique hideuse",analyse:`La <span class="procede-type">métaphore organique hideuse</span> (« crachats ») dépouille la guerre de toute grandeur épique.`},
           {id:"p-r2m1-2",num:2,citation:"l'infini du ciel bleu",ref:"(v. 2)",procede:"antithèse chromatique",analyse:`La pureté de cette <span class="procede-type">antithèse chromatique</span> (bleu du ciel / rouge du sang) accuse l'impassibilité du monde face au massacre.`},
-          {id:"p-r2m1-3",num:3,citation:"Roi qui les raille",ref:"(v. 3)",procede:"allitération gutturale en [r]",analyse:`L'<span class="procede-type">allitération gutturale en [r]</span> souligne la violence de l'attaque politique directe.`},
+          {id:"p-r2m1-3",num:3,citation:"Roi qui les raille",ref:"(v. 3)",procede:"allitération gutturale en [r]",analyse:`L'<span class="procede-type">allitération gutturale en [r]</span> souligne la violence de l'attaque politique directe contre des souverains indifférents.`},
           {id:"p-r2m1-4",num:4,citation:"Croulent les bataillons",ref:"(v. 4)",procede:"inversion syntaxique",analyse:`L'<span class="procede-type">inversion syntaxique</span> mettant le verbe de chute dramatique en tête de vers illustre l'anéantissement de masse.`}
         ]},
       { id:"r-t2-mvt2", mouvement:2, titre:"La Nature profanée par l'industrie de mort", vers:"v. 5-8",
@@ -162,17 +340,19 @@ const SEED = {
           {id:"p-r2m2-1",num:1,citation:"folie épouvantable, broie",ref:"(v. 5)",procede:"personnification + enjambement",analyse:`La violente <span class="procede-type">personnification</span> et l'<span class="procede-type">enjambement</span> transforment la guerre en une machine infernale et dévorante.`},
           {id:"p-r2m2-2",num:2,citation:"un tas fumant",ref:"(v. 6)",procede:"métaphore réifiante",analyse:`La terrible <span class="procede-type">métaphore réifiante</span> anéantit l'individualité de « cent milliers d'hommes ».`},
           {id:"p-r2m2-3",num:3,citation:"Pauvres morts ! dans l'été, dans l'herbe, dans ta joie",ref:"(v. 7)",procede:"anaphore",analyse:`L'<span class="procede-type">anaphore</span> rythme le contraste cruel entre le printemps verdoyant et la rigidité cadavérique.`},
-          {id:"p-r2m2-4",num:4,citation:"Nature ! ô toi qui fis ces hommes saintement !",ref:"(v. 8)",procede:"apostrophe lyrique païenne",analyse:`L'<span class="procede-type">apostrophe lyrique païenne</span> accuse par contraste l'impiété des chefs de guerre.`}
+          {id:"p-r2m2-4",num:4,citation:"Nature ! ô toi qui fis ces hommes saintement !",ref:"(v. 8)",procede:"apostrophe lyrique païenne",analyse:`L'<span class="procede-type">apostrophe lyrique païenne</span> accuse par contraste l'impiété des chefs de guerre qui détruisent la création.`}
         ]},
       { id:"r-t2-mvt3", mouvement:3, titre:"Le cynisme luxueux de Dieu", vers:"v. 9-12",
         procedes:[
-          {id:"p-r2m3-1",num:1,citation:"rit aux nappes damassées / Des autels, à l'encens, aux grands calices d'or",ref:"(v. 9-10)",procede:"champ lexical de l'opulence religieuse",analyse:`La saturation du <span class="procede-type">champ lexical de l'opulence religieuse</span> fustige la richesse obscène d'une Église coupée de son peuple.`},
-          {id:"p-r2m3-2",num:2,citation:"Qui dans le bercement des hosannah s'endort",ref:"(v. 11)",procede:"métaphore du sommeil",analyse:`La <span class="procede-type">métaphore du sommeil</span> révèle l'hypocrisie des rituels qui servent d'œillères pour ignorer le Mal.`}
+          {id:"p-r2m3-1",num:1,citation:"- Il est un Dieu, qui rit",ref:"(v. 9)",procede:"rupture + antithèse blasphématoire",analyse:`La <span class="procede-type">rupture</span> créée par le tiret précède une <span class="procede-type">antithèse blasphématoire</span> où la miséricorde attendue cède la place au sadisme divin.`},
+          {id:"p-r2m3-2",num:2,citation:"nappes damassées... encens... calices d'or",ref:"(v. 9-10)",procede:"champ lexical de l'opulence religieuse",analyse:`La saturation du <span class="procede-type">champ lexical de l'opulence religieuse</span> fustige la richesse obscène d'une Église coupée de son peuple.`},
+          {id:"p-r2m3-3",num:3,citation:"dans le bercement des hosannah s'endort",ref:"(v. 11)",procede:"métaphore du sommeil",analyse:`La <span class="procede-type">métaphore du sommeil</span> révèle l'hypocrisie des rituels qui servent uniquement d'œillères pour ignorer le Mal.`}
         ]},
-      { id:"r-t2-mvt4", mouvement:4, titre:"Le scandale vénal de l'Église", vers:"v. 13-14",
+      { id:"r-t2-mvt4", mouvement:4, titre:"Le scandale vénal de l'Église", vers:"v. 12-14",
         procedes:[
-          {id:"p-r2m4-1",num:1,citation:"pleurant sous leur vieux bonnet noir",ref:"(v. 13)",procede:"détail réaliste et chromatique",analyse:`Ce <span class="procede-type">détail réaliste et chromatique</span> (le deuil populaire) contraste violemment avec les « calices d'or ».`},
-          {id:"p-r2m4-2",num:2,citation:"Lui donnent un gros sou lié dans leur mouchoir !",ref:"(v. 14)",procede:"chute ironique",analyse:`La redoutable <span class="procede-type">chute ironique</span> prouve que la religion n'est qu'un commerce.`}
+          {id:"p-r2m4-1",num:1,citation:"des mères, ramassées / Dans l'angoisse",ref:"(v. 12-13)",procede:"participe passé postposé",analyse:`Le <span class="procede-type">participe passé postposé</span> exprime métaphoriquement et physiquement l'anéantissement des victimes civiles.`},
+          {id:"p-r2m4-2",num:2,citation:"pleurant sous leur vieux bonnet noir",ref:"(v. 13)",procede:"détail réaliste et chromatique",analyse:`Ce <span class="procede-type">détail réaliste et chromatique</span> (le deuil populaire) contraste violemment avec les « calices d'or » de l'institution.`},
+          {id:"p-r2m4-3",num:3,citation:"Lui donnent un gros sou lié dans leur mouchoir !",ref:"(v. 14)",procede:"chute ironique",analyse:`La redoutable <span class="procede-type">chute ironique</span> prouve que la religion n'est qu'un commerce : Dieu n'accorde son attention qu'au prix d'une tractation financière.`}
         ]}
     ]
   }
