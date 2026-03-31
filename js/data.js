@@ -183,45 +183,36 @@ const SEED = {
 // ----------------------------------------------------------------
 export async function seedIfEmpty() {
   const snap = await getDocs(collection(db, 'oeuvres'));
-  if (!snap.empty) { console.log('DB déjà initialisée.'); return; }
+  const isNew = snap.empty;
 
-  console.log('Initialisation de la base…');
-
-  for (const oeuvre of SEED.oeuvres) {
-    await setDoc(doc(db, 'oeuvres', oeuvre.id), { ...oeuvre, createdAt: serverTimestamp() });
-  }
-
-  for (const [oeuvreId, textes] of Object.entries(SEED.textes)) {
-    for (const texte of textes) {
-      await setDoc(doc(db, 'textes', texte.id), { ...texte, oeuvreId, createdAt: serverTimestamp() });
+  if (isNew) {
+    // Première initialisation : oeuvres + analyses
+    console.log('Initialisation de la base…');
+    for (const oeuvre of SEED.oeuvres) {
+      await setDoc(doc(db, 'oeuvres', oeuvre.id), { ...oeuvre, createdAt: serverTimestamp() });
     }
-  }
-
-  for (const [texteId, mouvements] of Object.entries(SEED.analyses)) {
-    for (const mvt of mouvements) {
-      const { procedes, ...mvtData } = mvt;
-      await setDoc(doc(db, 'mouvements', mvt.id), { ...mvtData, texteId, createdAt: serverTimestamp() });
-      for (let i = 0; i < procedes.length; i++) {
-        await setDoc(doc(db, 'procedes', procedes[i].id), { ...procedes[i], mouvementId: mvt.id, texteId, order: i, createdAt: serverTimestamp() });
+    for (const [texteId, mouvements] of Object.entries(SEED.analyses)) {
+      for (const mvt of mouvements) {
+        const { procedes, ...mvtData } = mvt;
+        await setDoc(doc(db, 'mouvements', mvt.id), { ...mvtData, texteId, createdAt: serverTimestamp() });
+        for (let i = 0; i < procedes.length; i++) {
+          await setDoc(doc(db, 'procedes', procedes[i].id), { ...procedes[i], mouvementId: mvt.id, texteId, order: i, createdAt: serverTimestamp() });
+        }
       }
     }
+    console.log('Seed initial terminé !');
   }
-  console.log('Seed terminé !');
-}
 
-// ----------------------------------------------------------------
-// RESEED TEXTES — met à jour les textes sans vider la base
-// Utile quand on ajoute/corrige des textes après initialisation
-// ----------------------------------------------------------------
-export async function reseedTextes() {
-  console.log('Mise à jour des textes…');
+  // Toujours : synchronise les textes depuis le code vers Firebase
+  // Permet d'ajouter/corriger des textes sans vider la base
   for (const [oeuvreId, textes] of Object.entries(SEED.textes)) {
     for (const texte of textes) {
       await setDoc(doc(db, 'textes', texte.id), { ...texte, oeuvreId, updatedAt: serverTimestamp() });
     }
   }
-  console.log('Textes mis à jour !');
+  console.log('Textes synchronisés !');
 }
+
 
 
 export async function getOeuvres() {
