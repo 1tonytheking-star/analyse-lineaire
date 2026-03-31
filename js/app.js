@@ -264,7 +264,14 @@ async function showTexte(texteId) {
   state.currentMouvements = mouvements;
 
   const EM = state.editMode;
-  const eAttr = (field) => EM ? `class="editable" data-field="${field}" data-doc="texte" data-id="${texteId}"` : '';
+  // eAttr: adds editable class WITHOUT replacing existing classes — use on elements that have their own class
+  const eAttr = (field, extraClass = '') => EM
+    ? `class="${extraClass ? extraClass + ' ' : ''}editable" data-field="${field}" data-doc="texte" data-id="${texteId}"`
+    : (extraClass ? `class="${extraClass}"` : '');
+
+  const eConcItem = (field, idx) => EM
+    ? `class="editable-conc" contenteditable="true" data-conc-field="${field}" data-conc-idx="${idx}" data-texte-id="${texteId}"`
+    : '';
 
   content.innerHTML = `
     <div class="texte-view" id="texteView">
@@ -276,7 +283,7 @@ async function showTexte(texteId) {
         <div class="texte-ref">${oeuvre?.auteur||''} · ${oeuvre?.titre||''}</div>
         <h2 ${eAttr('titre')}>${texte.titre}</h2>
 
-        <div class="intro-box" ${eAttr('intro')}>${texte.intro||'<em style="color:var(--text-light)">Ajouter une introduction…</em>'}</div>
+        <div ${eAttr('intro', 'intro-box')}>${texte.intro||'<em style="color:var(--text-light)">Ajouter une introduction…</em>'}</div>
 
         <div class="kw-grid">
           <div class="kw-item">
@@ -313,13 +320,13 @@ async function showTexte(texteId) {
       <!-- Conclusion -->
       <div class="conclusion-card">
         <div class="section-label">Conclusion</div>
-        <div class="conclusion-full" ${eAttr('conclusion')}>${texte.conclusion||'<em style="color:var(--text-light)">Ajouter une conclusion…</em>'}</div>
+        <div ${eAttr('conclusion', 'conclusion-full')}>${texte.conclusion||'<em style="color:var(--text-light)">Ajouter une conclusion…</em>'}</div>
         <div class="conclusion-grid" id="conclusionGrid">
           ${(texte.conclusionItems||[]).map((item,i) => `
-            <div class="conclusion-item" data-conc-idx="${i}">
-              <div class="conc-label" ${EM ? `contenteditable="true" data-conc-field="label" data-conc-idx="${i}" data-texte-id="${texteId}"` : ''}>${item.label}</div>
-              <p ${EM ? `contenteditable="true" data-conc-field="texte" data-conc-idx="${i}" data-texte-id="${texteId}"` : ''}>${item.texte}</p>
-              ${EM ? `<button class="btn-delete-conc" data-idx="${i}">✕</button>` : ''}
+            <div class="conclusion-item" data-conc-idx="${i}" style="${EM ? 'position:relative' : ''}">
+              <div class="conc-label" ${eConcItem('label', i)}>${item.label}</div>
+              <p ${eConcItem('texte', i)}>${item.texte}</p>
+              ${EM ? `<button class="btn-delete-conc" data-idx="${i}" style="position:absolute;top:6px;right:6px;background:none;border:none;color:#dc2626;cursor:pointer;font-size:12px;">✕</button>` : ''}
             </div>`).join('')}
         </div>
         ${EM ? `
@@ -374,7 +381,6 @@ function startInlineEdit(el) {
   if (el.classList.contains('editing')) return;
   el.classList.add('editing');
 
-  const original = el.innerHTML;
   const isMultiline = el.tagName === 'P' || el.tagName === 'DIV';
   const field = el.dataset.field;
   const docType = el.dataset.doc;
@@ -393,13 +399,15 @@ function startInlineEdit(el) {
   el.parentNode.insertBefore(input, el.nextSibling);
   input.focus();
 
+  const currentText = el.textContent.trim();
+
   const save = async () => {
     const newVal = input.value.trim();
     input.remove();
     el.style.display = originalDisplay;
     el.classList.remove('editing');
 
-    if (newVal === el.textContent.trim()) return; // no change
+    if (newVal === currentText) return; // no change
 
     el.textContent = newVal;
     if (docType === 'texte') await updateTexte(docId, { [field]: newVal });
@@ -420,10 +428,12 @@ function startInlineEdit(el) {
 // ----------------------------------------------------------------
 function bindConclusionEdits(texte, texteId) {
   // Edit existing items inline
-  content.querySelectorAll('[data-conc-field]').forEach(el => {
-    el.style.outline = '1px dashed var(--accent)';
+  content.querySelectorAll('.editable-conc').forEach(el => {
+    el.style.outline = '2px dashed var(--accent)';
     el.style.borderRadius = '4px';
     el.style.minHeight = '20px';
+    el.style.cursor = 'text';
+    el.style.padding = '2px 4px';
     el.addEventListener('blur', async () => {
       const idx = parseInt(el.dataset.concIdx);
       const field = el.dataset.concField;
@@ -432,13 +442,12 @@ function bindConclusionEdits(texte, texteId) {
       items[idx] = { ...items[idx], [field]: el.textContent.trim() };
       texte.conclusionItems = items;
       await updateTexte(texteId, { conclusionItems: items });
-      toast('Conclusion mise à jour', 'success');
+      toast('Conclusion mise à jour ✓', 'success');
     });
   });
 
   // Delete conclusion item
   content.querySelectorAll('.btn-delete-conc').forEach(btn => {
-    btn.style.cssText = 'position:absolute;top:6px;right:6px;background:none;border:none;color:#dc2626;cursor:pointer;font-size:12px;';
     btn.addEventListener('click', async () => {
       const idx = parseInt(btn.dataset.idx);
       const items = [...(texte.conclusionItems || [])].filter((_,i) => i !== idx);
@@ -448,8 +457,6 @@ function bindConclusionEdits(texte, texteId) {
       toast('Élément supprimé', 'success');
     });
   });
-  // Make conclusion items relatively positioned for delete btn
-  content.querySelectorAll('.conclusion-item').forEach(el => el.style.position = 'relative');
 
   // Add conclusion item
   document.getElementById('btnAddConc')?.addEventListener('click', async () => {
