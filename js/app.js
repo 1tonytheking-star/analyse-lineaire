@@ -45,7 +45,6 @@ async function init() {
   updateThemeIcon();
 
   await seedIfEmpty();
-  await seedAnalysesManquantes(); // ← À SUPPRIMER après le premier chargement
   state.oeuvres = await getOeuvres();
 
   renderSidebar();
