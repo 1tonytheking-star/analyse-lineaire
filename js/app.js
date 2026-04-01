@@ -305,7 +305,7 @@ async function showTexte(texteId) {
       <!-- Texte intégral -->
       <div class="texte-integral-card">
         <div class="section-label">Texte intégral</div>
-        <div class="texte-integral" ${EM ? `contenteditable="true" data-field="texteIntegral" data-doc="texte" data-id="${texteId}"` : ''}>${texte.texteIntegral||'<em style="color:var(--text-light)">Coller le texte intégral ici…</em>'}</div>
+        <div class="texte-integral" id="texteIntegralDisplay" ${EM ? `contenteditable="true" data-field="texteIntegral" data-doc="texte" data-id="${texteId}"` : ''}>${texte.texteIntegral||'<em style="color:var(--text-light)">Coller le texte intégral ici…</em>'}</div>
         ${EM ? `<button class="btn-save-field" data-field="texteIntegral" data-doc="texte" data-id="${texteId}" style="margin-top:8px">💾 Sauvegarder le texte</button>` : ''}
       </div>
 
@@ -343,6 +343,9 @@ async function showTexte(texteId) {
     const block = await renderMouvement(mvt, texteId);
     container.appendChild(block);
   }
+
+  // Appliquer les surlignements dynamiques sur le texte intégral
+  await refreshHighlights(texteId, mouvements);
 
   // Bind events
   if (EM) {
@@ -545,6 +548,8 @@ async function renderMouvement(mvt, texteId) {
       await deleteProcede(btn.dataset.procedeId);
       btn.closest('.procede-row').remove();
       toast('Procédé supprimé', 'success');
+      // Mettre à jour les surlignements
+      await refreshHighlights(texteId, state.currentMouvements);
     });
   });
 
@@ -700,16 +705,18 @@ document.getElementById('saveAnalyse').addEventListener('click', async () => {
   const num = parseInt(document.getElementById('analyseNumero').value);
   const analyse = `La <span class="procede-type">${procede}</span> ${analyseText}`;
   const ref = document.getElementById('analyseRef').value.trim();
+  // Récupérer les indices de mots sélectionnés (pour le surlignement dynamique)
+  const wordIndices = citationPickerState.lastValidatedIndices || [];
 
   if (state.editingProcede) {
     // UPDATE existing
-    await updateProcede(state.editingProcede.id, { citation, ref, procede, analyse, mouvement: mvtNum, num });
+    await updateProcede(state.editingProcede.id, { citation, ref, procede, analyse, mouvement: mvtNum, num, wordIndices });
     toast('Procédé modifié !', 'success');
     closeAllModals();
     showTexte(state.currentTexteId);
   } else {
     // ADD new
-    const docRef = await addProcede(state.pendingAnalyseMvtId, state.pendingAnalyseTexteId, { num, citation, ref, procede, analyse, mouvement: mvtNum });
+    const docRef = await addProcede(state.pendingAnalyseMvtId, state.pendingAnalyseTexteId, { num, citation, ref, procede, analyse, mouvement: mvtNum, wordIndices });
     const body = document.getElementById(`body-${state.pendingAnalyseMvtId}`);
     const addBtn = body?.querySelector('.btn-add-procede');
     const count = body?.querySelectorAll('.procede-row').length + 1;
@@ -721,17 +728,21 @@ document.getElementById('saveAnalyse').addEventListener('click', async () => {
       await deleteProcede(docRef.id);
       rowEl.remove();
       toast('Supprimé', 'success');
+      // Mettre à jour les surlignements
+      await refreshHighlights(state.currentTexteId, state.currentMouvements);
     });
     if (state.editMode) {
       rowEl.style.cursor = 'pointer';
       rowEl.addEventListener('click', (e) => {
         if (e.target.classList.contains('procede-delete')) return;
-        openEditProcede({ id: docRef.id, citation, ref, procede, analyse, mouvement: mvtNum, num }, state.pendingAnalyseMvtId, state.pendingAnalyseTexteId, rowEl);
+        openEditProcede({ id: docRef.id, citation, ref, procede, analyse, mouvement: mvtNum, num, wordIndices }, state.pendingAnalyseMvtId, state.pendingAnalyseTexteId, rowEl);
       });
     }
     if (body && addBtn) body.insertBefore(rowEl, addBtn);
     toast('Analyse ajoutée !', 'success');
     closeAllModals();
+    // Mettre à jour les surlignements
+    await refreshHighlights(state.currentTexteId, state.currentMouvements);
   }
 
   document.getElementById('analyseCitation').value = '';
@@ -829,6 +840,7 @@ function resetCitationZone() {
   document.getElementById('citationChoisieZone').style.display = 'none';
   document.getElementById('citationVide').style.display = '';
   document.getElementById('citationChoisieAffichage').innerHTML = '';
+  citationPickerState.lastValidatedIndices = [];
 }
 
 function showCitationChoisie(citation, ref, color) {
@@ -1023,6 +1035,9 @@ document.getElementById('citationValider').addEventListener('click', () => {
   const mvtNum = parseInt(document.getElementById('analyseMouvement').value) || 1;
   const color = getMvtColor(mvtNum);
 
+  // Mémoriser les indices pour les sauvegarder avec le procédé
+  citationPickerState.lastValidatedIndices = selected.map(w => w.index);
+
   // Remplir les champs cachés
   document.getElementById('analyseCitation').value = citation;
   document.getElementById('analyseRef').value = ref;
@@ -1049,6 +1064,179 @@ document.getElementById('modalCitation').addEventListener('click', e => {
 });
 
 document.getElementById('btnChoisirCitation').addEventListener('click', openCitationPicker);
+
+// ----------------------------------------------------------------
+// SURLIGNEMENTS DYNAMIQUES
+// ----------------------------------------------------------------
+
+/**
+ * Tokenise le texte intégral (HTML → texte brut) en une liste de mots
+ * avec leur position dans le texte brut, identique à ce que fait le citation picker.
+ * Retourne: [{ index, text, start, end }]  où start/end sont des offsets dans rawText
+ */
+function tokenizeTexte(texteIntegralHTML) {
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = texteIntegralHTML;
+  const rawText = tempDiv.innerText || tempDiv.textContent;
+  const lines = rawText.split('\n');
+
+  const words = [];
+  let wordIndex = 0;
+
+  lines.forEach((line) => {
+    if (!line.trim()) return;
+
+    const versMatch = line.match(/\s+(\d+)\s*$/);
+    const lineText = versMatch ? line.replace(/\s+\d+\s*$/, '') : line;
+
+    const isPersonnage = /^[A-ZÀÂÉÈÊÎÏÔÙÛÜ][a-zàâéèêîïôùûüA-Z]*\.$/.test(lineText.trim()) ||
+                         /^[A-ZÀÂÉÈÊÎÏÔÙÛÜ]+\s*\.$/.test(lineText.trim());
+    if (isPersonnage) return;
+
+    const tokens = lineText.split(/(\s+)/);
+    tokens.forEach(token => {
+      if (!token || /^\s+$/.test(token)) return;
+      words.push({ index: wordIndex, text: token });
+      wordIndex++;
+    });
+  });
+
+  return words;
+}
+
+/**
+ * Reconstruit le HTML du texte intégral en injectant des <mark> colorés
+ * sur les mots correspondant aux wordIndices de chaque procédé.
+ * Pour les procédés sans wordIndices, fait un matching textuel sur la citation.
+ */
+async function refreshHighlights(texteId, mouvements) {
+  const displayEl = document.getElementById('texteIntegralDisplay');
+  if (!displayEl || state.editMode) return;
+
+  const texte = state.currentTexteData;
+  if (!texte || !texte.texteIntegral) return;
+
+  // Collecter tous les procédés de tous les mouvements
+  const allProcedes = [];
+  for (const mvt of mouvements) {
+    const procedes = await getProcedesForMouvement(mvt.id);
+    for (const p of procedes) {
+      allProcedes.push({ ...p, mvtNum: mvt.mouvement });
+    }
+  }
+
+  // Tokeniser le texte pour avoir l'index de chaque mot
+  const words = tokenizeTexte(texte.texteIntegral);
+
+  // Construire un Set des indices surlignés : index → couleur (mvtNum)
+  // Un mot peut être couvert par plusieurs procédés ; on garde la couleur du premier
+  const highlightMap = new Map(); // wordIndex → couleur hex
+
+  for (const p of allProcedes) {
+    const color = getMvtColor(p.mvtNum);
+    let indices = [];
+
+    if (p.wordIndices && p.wordIndices.length > 0) {
+      // Cas idéal : indices sauvegardés
+      indices = p.wordIndices;
+    } else {
+      // Fallback : matching textuel de la citation dans les mots du texte
+      // On nettoie la citation (retire les «», les …, etc.)
+      const cleanCitation = p.citation
+        .replace(/«\s*/g, '').replace(/\s*»/g, '')
+        .replace(/\s*…\s*/g, ' ')
+        .trim();
+
+      // Pour chaque "segment" de la citation (séparé par …)
+      const segments = p.citation.split('…').map(s =>
+        s.replace(/«\s*/g, '').replace(/\s*»/g, '').trim()
+      ).filter(Boolean);
+
+      for (const segment of segments) {
+        const segWords = segment.split(/\s+/).filter(Boolean);
+        if (!segWords.length) continue;
+
+        // Chercher cette séquence dans words[]
+        for (let i = 0; i <= words.length - segWords.length; i++) {
+          const match = segWords.every((sw, j) => {
+            const wt = words[i + j]?.text || '';
+            // Comparaison souple : sans ponctuation, sans accents, lowercase
+            const normalize = s => s.toLowerCase().replace(/[.,;:!?'"()]/g, '');
+            return normalize(wt) === normalize(sw);
+          });
+          if (match) {
+            for (let j = 0; j < segWords.length; j++) {
+              indices.push(words[i + j].index);
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    // Appliquer la couleur sur chaque index trouvé
+    for (const idx of indices) {
+      if (!highlightMap.has(idx)) {
+        highlightMap.set(idx, color);
+      }
+    }
+  }
+
+  if (highlightMap.size === 0) {
+    // Rien à surlignerXÉ, afficher le texte brut
+    displayEl.innerHTML = texte.texteIntegral;
+    return;
+  }
+
+  // Reconstruire le HTML mot par mot en injectant les <mark>
+  // On travaille sur le texte brut ligne par ligne, comme le picker
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = texte.texteIntegral;
+  const rawText = tempDiv.innerText || tempDiv.textContent;
+  const lines = rawText.split('\n');
+
+  let wordIndex = 0;
+  let outputHTML = '';
+
+  lines.forEach((line, lineIdx) => {
+    if (!line.trim()) {
+      outputHTML += '\n';
+      return;
+    }
+
+    const versMatch = line.match(/\s+(\d+)\s*$/);
+    const versNum = versMatch ? versMatch[1] : null;
+    const lineText = versMatch ? line.replace(/\s+\d+\s*$/, '') : line;
+
+    const isPersonnage = /^[A-ZÀÂÉÈÊÎÏÔÙÛÜ][a-zàâéèêîïôùûüA-Z]*\.$/.test(lineText.trim()) ||
+                         /^[A-ZÀÂÉÈÊÎÏÔÙÛÜ]+\s*\.$/.test(lineText.trim());
+
+    if (isPersonnage) {
+      outputHTML += `<b>${lineText.trim()}</b>\n`;
+      return;
+    }
+
+    const tokens = lineText.split(/(\s+)/);
+    let lineHTML = '';
+    tokens.forEach(token => {
+      if (/^\s+$/.test(token)) { lineHTML += token; return; }
+      if (!token) return;
+
+      const color = highlightMap.get(wordIndex);
+      if (color) {
+        lineHTML += `<mark style="background:${color}22;color:${color};border-radius:3px;padding:0 2px;font-weight:600;">${token}</mark>`;
+      } else {
+        lineHTML += token;
+      }
+      wordIndex++;
+    });
+
+    if (versNum) lineHTML += ` <span style="opacity:0.4;font-size:0.8em;font-style:normal">${versNum}</span>`;
+    outputHTML += lineHTML + '\n';
+  });
+
+  displayEl.innerHTML = outputHTML;
+}
 
 // ----------------------------------------------------------------
 // START
