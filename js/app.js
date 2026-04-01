@@ -572,7 +572,7 @@ function renderProcede(p, mvtNum, displayNum) {
     <div class="procede-row${EM ? ' procede-row--editable' : ''}" data-procede-id="${p.id}">
       <div class="procede-num ${nClass}">${displayNum}</div>
       <div class="procede-content">
-        <span class="procede-citation">« ${p.citation} »</span>
+        <span class="procede-citation">${p.citation.includes('«') ? p.citation : `« ${p.citation} »`}</span>
         <span class="procede-ref">${p.ref||''}</span>
         <span class="procede-analyse">${p.analyse}</span>
       </div>
@@ -751,7 +751,7 @@ function updateAnalysePreview() {
   const p = document.getElementById('analyseProcede').value;
   const t = document.getElementById('analyseTexte').value;
   const prev = document.getElementById('analysePreview');
-  prev.innerHTML = (c||t) ? `<em>« ${c} »</em> — La <strong>${p}</strong> ${t}` : '';
+  prev.innerHTML = (c||t) ? `<em>${c.includes('«') ? c : `« ${c} »`}</em> — La <strong>${p}</strong> ${t}` : '';
 }
 
 // ----------------------------------------------------------------
@@ -836,7 +836,7 @@ function showCitationChoisie(citation, ref, color) {
   document.getElementById('citationVide').style.display = 'none';
   const affichage = document.getElementById('citationChoisieAffichage');
   affichage.innerHTML = `
-    <span class="citation-badge" style="border-color:${color};color:${color}">« ${citation} »</span>
+    <span class="citation-badge" style="border-color:${color};color:${color}">${citation}</span>
     ${ref ? `<span class="citation-ref-badge">${ref}</span>` : ''}
   `;
 }
@@ -969,6 +969,23 @@ function toggleCitationWord(wordIndex, color) {
   updateCitationInfo(color);
 }
 
+// Regroupe les mots sélectionnés en blocs contigus et retourne la chaîne de citation
+function buildCitationString(sorted) {
+  if (sorted.length === 0) return '';
+  const groups = [];
+  let current = [sorted[0]];
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i].index === sorted[i - 1].index + 1) {
+      current.push(sorted[i]);
+    } else {
+      groups.push(current);
+      current = [sorted[i]];
+    }
+  }
+  groups.push(current);
+  return groups.map(g => `« ${g.map(w => w.text).join(' ')} »`).join(' … ');
+}
+
 function updateCitationInfo(color) {
   const selected = citationPickerState.selectedWords;
   const info = document.getElementById('citationSelectionInfo');
@@ -982,14 +999,14 @@ function updateCitationInfo(color) {
 
   // Trier par ordre d'apparition dans le texte
   const sorted = [...selected].sort((a, b) => a.index - b.index);
-  const citation = sorted.map(w => w.text).join(' ');
+  const citation = buildCitationString(sorted);
 
   // Référence : premier et dernier vers/ligne sélectionnés
   const firstRef = sorted[0].lineRef;
   const lastRef = sorted[sorted.length - 1].lineRef;
   const ref = firstRef === lastRef ? firstRef : `${firstRef}–${lastRef}`;
 
-  info.innerHTML = `<span style="color:${color}">« ${citation} »</span> <em style="opacity:0.7">${ref}</em>`;
+  info.innerHTML = `<span style="color:${color}">${citation}</span> <em style="opacity:0.7">${ref}</em>`;
   btn.disabled = false;
 }
 
@@ -998,7 +1015,7 @@ document.getElementById('citationValider').addEventListener('click', () => {
   const selected = [...citationPickerState.selectedWords].sort((a, b) => a.index - b.index);
   if (selected.length === 0) return;
 
-  const citation = selected.map(w => w.text).join(' ');
+  const citation = buildCitationString(selected);
   const firstRef = selected[0].lineRef;
   const lastRef = selected[selected.length - 1].lineRef;
   const ref = firstRef === lastRef ? firstRef : `${firstRef}–${lastRef}`;
