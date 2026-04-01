@@ -3,7 +3,7 @@
 // ================================================================
 
 import {
-  seedIfEmpty, getOeuvres, addOeuvre, updateOeuvre,
+  seedIfEmpty, seedAnalysesManquantes, getOeuvres, addOeuvre, updateOeuvre,
   getTextesForOeuvre, getTexte, addTexte, updateTexte,
   getMouvementsForTexte, addMouvement, updateMouvement, deleteMouvement,
   getProcedesForMouvement, addProcede, updateProcede, deleteProcede
@@ -45,6 +45,7 @@ async function init() {
   updateThemeIcon();
 
   await seedIfEmpty();
+  await seedAnalysesManquantes(); // ← À SUPPRIMER après le premier chargement
   state.oeuvres = await getOeuvres();
 
   renderSidebar();
