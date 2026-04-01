@@ -361,6 +361,27 @@ const SEED = {
 // ----------------------------------------------------------------
 // SEED — vérifie que la base est vide avant d'insérer (anti-doublon)
 // ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// SEED ANALYSES MANQUANTES — insère f-t2, f-t3, r-t1, r-t2
+// Utilise setDoc → idempotent, pas de doublon si on recharge
+// ----------------------------------------------------------------
+export async function seedAnalysesManquantes() {
+  const texteIds = ["f-t2", "f-t3", "r-t1", "r-t2"];
+  let total = 0;
+  for (const texteId of texteIds) {
+    const mouvements = SEED.analyses[texteId] || [];
+    for (const mvt of mouvements) {
+      const { procedes, ...mvtData } = mvt;
+      await setDoc(doc(db, 'mouvements', mvt.id), { ...mvtData, texteId, createdAt: serverTimestamp() });
+      for (let i = 0; i < procedes.length; i++) {
+        await setDoc(doc(db, 'procedes', procedes[i].id), { ...procedes[i], mouvementId: mvt.id, texteId, order: i, createdAt: serverTimestamp() });
+        total++;
+      }
+    }
+  }
+  console.log(`Analyses manquantes importées : ${total} procédés.`);
+}
+
 export async function seedIfEmpty() {
   const snap = await getDocs(collection(db, 'oeuvres'));
   const isNew = snap.empty;
