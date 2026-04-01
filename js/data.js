@@ -47,14 +47,6 @@ export async function seedIfEmpty() {
     }
     console.log('Seed initial terminé !');
   }
-
-  // Toujours : synchronise les textes depuis le code vers Firebase
-  // Permet d'ajouter/corriger des textes sans vider la base
-  for (const [oeuvreId, textes] of Object.entries(SEED.textes)) {
-    for (const texte of textes) {
-      await setDoc(doc(db, 'textes', texte.id), { ...texte, oeuvreId, updatedAt: serverTimestamp() });
-    }
-  }
   console.log('Textes synchronisés !');
 }
 
