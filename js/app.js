@@ -835,10 +835,10 @@ function getMvtColor(mvtNum) {
 
 // 8 variantes de couleur par mouvement
 const MVT_VARIANTS = {
-  1: ['#dbeeff','#b8deff','#8ec8ff','#64b0f0','#a0ccf5','#c8e4ff','#4a9ae0','#3480cc'],
-  2: ['#d4f5df','#a8ebc0','#78dfa0','#50d080','#90e8b0','#beedd0','#30b860','#1a9a48'],
-  3: ['#ffe8cc','#ffd0a0','#ffb870','#ff9940','#ffc080','#ffe0b8','#f07820','#d05c00'],
-  4: ['#f0e0ff','#e0c0ff','#c898ff','#b070f0','#d8a8ff','#ead0ff','#9848e0','#7820c8']
+  1: ['#b8deff','#7ec0f8','#4a9ae0','#1e6fbe','#cce8ff','#3480cc','#5db0f0','#0a4f9a'],
+  2: ['#a8ebc0','#60d488','#20b060','#0a8040','#c8f5d8','#1a9a48','#78dfa0','#056030'],
+  3: ['#ffd0a0','#ffaa60','#f07820','#c05000','#ffe8cc','#e06010','#ffb870','#903800'],
+  4: ['#e0c0ff','#c080ff','#9848e0','#6818b8','#f0d8ff','#7820c8','#b060f0','#480890']
 };
 
 // Retourne les variantes déjà utilisées pour un mouvement donné
@@ -1317,7 +1317,7 @@ async function refreshHighlights(texteId, mouvements) {
         }
       }
       // Générer le <mark> pour ce bloc
-      lineHTML += `<mark style="background:${blockColor}33;color:inherit;border-radius:4px;padding:1px 4px;font-weight:600;">${blockContent}</mark>`;
+      lineHTML += `<mark style="background:${blockColor}99;color:inherit;border-radius:4px;padding:1px 4px;font-weight:600;">${blockContent}</mark>`;
       i = j;
     }
 
